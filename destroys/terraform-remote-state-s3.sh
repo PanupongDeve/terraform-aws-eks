@@ -1,0 +1,1 @@
+terraform destroy -target=aws_s3_bucket.terraform_state

@@ -1,0 +1,1 @@
+terraform apply -target=aws_s3_bucket.terraform_state
