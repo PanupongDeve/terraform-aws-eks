@@ -93,8 +93,21 @@ module "eks" {
 
   vpc_id = module.vpc.vpc_id
 
-  map_roles    = var.map_roles
-  map_users    = var.map_users
-  map_accounts = var.map_accounts
+  node_groups = {
+    default = {
+      name              = "default"
+      desired_capacity  = 1
+      max_capacity      = 5
+      min_capacity      = 1
+      disk_size         = 50
+      instance_type     = "t3.small"
+       k8s_labels = {
+        Environment     = var.environment
+        Service         = "kube-system"
+        ProjectName     = var.project_name
+      }
+    }
+  }
+
 }
 
